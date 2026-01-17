@@ -23,7 +23,7 @@
                 <div class="stat-box">
                     <div class="stat-icon"><i class="fas fa-trophy"></i></div>
                     <div class="stat-info">
-                        <h4>100%</h4>
+                        <h4>10%</h4>
                         <span>Transparan</span>
                     </div>
                 </div>
