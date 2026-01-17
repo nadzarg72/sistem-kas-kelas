@@ -13,10 +13,10 @@
     --input-bg: #f8fafc;
     
     /* AKSEN WARNA - SEKARANG FULL ORANGE */
-    --accent-color: #0c91e6;     /* Orange Utama (Gantiin Biru) */
-    --secondary-accent: #0c91ea; /* Orange Gelap (Hover/Secondary) */
+    --accent-color: #0c91e6;     /* Orange Utama */
+    --secondary-accent: #0c91ea; /* Orange Gelap */
     --danger-color: #dc2626;     /* Merah */
-    --brand-orange: #0c91e6;     /* Orange ala STMIK */
+    --brand-orange: #0c91e6;     /* Orange Brand */
     
     --shadow-soft: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
@@ -33,6 +33,7 @@ body.dark-mode {
     --shadow-soft: 0 10px 15px -3px rgba(0, 0, 0, 0.5);
 }
 
+/* RESET ASLI (SESUAI PERMINTAAN LO YANG BELUM DIEDIT) */
 * {
     margin: 0; padding: 0; box-sizing: border-box;
     font-family: 'Poppins', sans-serif; scroll-behavior: smooth;
@@ -69,9 +70,8 @@ body {
 @keyframes pulseGlow { 0% { transform: translate(-50%, -50%) scale(0.8); opacity: 0.3; } 100% { transform: translate(-50%, -50%) scale(1.2); opacity: 0.6; } }
 
 /* =========================================
-   3. HERO SECTION (LAYOUT STMIK BARU)
+   3. HERO SECTION
    ========================================= */
-
 .hero { 
     position: relative;
     min-height: 100vh; 
@@ -93,11 +93,9 @@ body {
     gap: 50px; padding: 0 20px; align-items: center;
 }
 
-/* Hero Text (Kiri) */
 .hero-text h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 20px; font-weight: 800; color: white; }
 .hero-text p { font-size: 1.1rem; color: #e2e8f0; margin-bottom: 30px; line-height: 1.6; max-width: 90%; }
 
-/* Tombol-tombol Hero */
 .btn-group { display: flex; gap: 15px; }
 .btn-orange { padding: 15px 30px; background: var(--accent-color); color: white; font-weight: bold; border-radius: 8px; text-decoration: none; transition: 0.3s; border: none; }
 .btn-orange:hover { background: var(--secondary-accent); transform: translateY(-3px); }
@@ -115,7 +113,6 @@ body {
 }
 .hero-card h3 { font-size: 1.5rem; font-weight: 700; margin-bottom: 20px; border-left: 5px solid var(--accent-color); padding-left: 15px; }
 
-/* Grid Statistik di dalam Card */
 .stats-grid-hero { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
 .stat-box { background: rgba(0,0,0,0.3); padding: 15px; border-radius: 12px; display: flex; align-items: center; gap: 15px; transition: 0.3s; }
 .stat-box:hover { background: rgba(0,0,0,0.5); transform: translateY(-2px); }
@@ -123,7 +120,6 @@ body {
 .stat-info h4 { font-size: 1.2rem; margin: 0; font-weight: 800; }
 .stat-info span { font-size: 0.8rem; color: #cbd5e1; }
 
-/* Responsive Mobile Hero */
 @media (max-width: 968px) {
     .hero-content { grid-template-columns: 1fr; text-align: center; margin-top: 50px; }
     .hero-text h1 { font-size: 2.5rem; }
@@ -140,7 +136,7 @@ body {
     padding: 1.5rem 5%; 
     position: fixed; width: 100%; top: 0; z-index: 1000;
     transition: all 0.4s ease; 
-    background: transparent;   
+    background: transparent;    
     border-bottom: 1px solid transparent;
 }
 
@@ -238,16 +234,24 @@ body.dark-mode .icon-moon { display: none; }
 @media (max-width: 768px) { .full-width { grid-column: span 1; } }
 
 /* =========================================
-   7. DASHBOARD
+   7. DASHBOARD (SUDAH DIPERBAIKI: TANPA HOVER ANIMATION)
    ========================================= */
 .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-bottom: 30px; }
 .dashboard-main { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 30px; align-items: stretch; }
 @media (max-width: 768px) { .dashboard-main { grid-template-columns: 1fr; } }
+
+/* BOX KOTAK-KOTAK - SEKARANG STATIS (GA ADA ANIMASI PAS DISENTUH) */
 .dash-card {
     background: var(--card-bg); padding: 25px; border-radius: 16px; border: 1px solid var(--border-color);
     box-shadow: var(--shadow-soft); display: flex; flex-direction: column; justify-content: center;
+    /* transition: dihapus biar gak ada efek transisi di box */
 }
-.chart-container { position: relative; height: 300px; width: 100%; }
+
+/* WADAH CHART - BIAR RAPI */
+.chart-container { 
+    position: relative; height: 300px; width: 100%; 
+}
+
 .table-wrapper { background: var(--card-bg); padding: 25px; border-radius: 16px; border: 1px solid var(--border-color); box-shadow: var(--shadow-soft); overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; }
 th { text-align: left; padding: 15px; color: var(--text-muted); border-bottom: 2px solid var(--border-color); text-transform: uppercase; font-size: 0.8rem; font-weight: 700; letter-spacing: 1px; }
@@ -275,7 +279,7 @@ tr:hover td { background: var(--input-bg); }
 .member-img img:hover { transform: scale(1.05); }
 
 /* =========================================
-   9. FOOTER
+   9. FOOTER & ANIMASI MASUK
    ========================================= */
 footer {
     position: relative; z-index: 20; background: var(--card-bg);
@@ -283,9 +287,6 @@ footer {
     border-top: 1px solid var(--border-color);
 }
 
-/* =========================================
-   10. ANIMASI DASHBOARD ENTRY
-   ========================================= */
 .animate-entry {
     opacity: 0; 
     animation: fadeInUp 0.8s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
@@ -294,4 +295,3 @@ footer {
 .delay-2 { animation-delay: 0.3s; } 
 .delay-3 { animation-delay: 0.5s; } 
 .delay-4 { animation-delay: 0.7s; }
-
