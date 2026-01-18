@@ -235,8 +235,14 @@ body.dark-mode .icon-moon { display: none; }
 .dashboard-main { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; margin-bottom: 30px; align-items: stretch; }
 @media (max-width: 768px) { .dashboard-main { grid-template-columns: 1fr; } }
 .dash-card {
-    background: var(--card-bg); padding: 25px; border-radius: 16px; border: 1px solid var(--border-color);
-    box-shadow: var(--shadow-soft); display: flex; flex-direction: column; justify-content: center;
+    background: var(--card-bg); 
+    padding: 25px; 
+    border-radius: 16px; 
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-soft); 
+    display: flex; 
+    flex-direction: column; 
+    justify-content: center;
 }
 .chart-container { position: relative; height: 300px; width: 100%; }
 .table-wrapper { background: var(--card-bg); padding: 25px; border-radius: 16px; border: 1px solid var(--border-color); box-shadow: var(--shadow-soft); overflow-x: auto; }
