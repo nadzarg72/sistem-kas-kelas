@@ -31,7 +31,7 @@
                     <div class="stat-icon"><i class="fas fa-globe"></i></div>
                     <div class="stat-info">
                         <h4>24/7</h4>
-                        <span>Akses Online</span>
+                        <span>Akses e</span>
                     </div>
                 </div>
                 <div class="stat-box">
