@@ -79,7 +79,7 @@
     
     <div class="member-row">
         <div class="member-text slide-left">
-            <h2>Saputra</h2>
+            <h2>Muhamad Saputra Wargadireja </h2>
             <h4 style="color: var(--brand-orange);">PROJECT LEADER</h4>
             <p>Bertanggung jawab atas manajemen proyek dan alur sistem.</p>
         </div>
@@ -88,7 +88,7 @@
 
     <div class="member-row">
         <div class="member-text slide-right">
-            <h2>Nadza</h2>
+            <h2>Nadza Rizqi Gunawan</h2>
             <h4 style="color: var(--brand-orange);">DATABASE ENGINEER</h4>
             <p>Merancang dan mengelola struktur basis data MySQL.</p>
         </div>
@@ -97,7 +97,7 @@
 
     <div class="member-row">
         <div class="member-text slide-left">
-            <h2>Rafli</h2>
+            <h2>Nur Fikri Muhamad Rafly</h2>
             <h4 style="color: var(--brand-orange);">FRONTEND DEV</h4>
             <p>Mengembangkan antarmuka pengguna yang responsif.</p>
         </div>
