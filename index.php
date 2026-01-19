@@ -80,7 +80,7 @@
     <div class="member-row">
         <div class="member-text slide-left">
             <h2>Saputra</h2>
-            <h4 style="color: var(--brand-orange);">PROJECT LEADER</h4>
+            <h4 style="color: var(--brand-orange);">PROJECT MANAGER</h4>
             <p>Bertanggung jawab atas manajemen proyek dan alur sistem.</p>
         </div>
         <div class="member-img slide-right"><img src="assets/img/member1.png" alt="Member 1"></div>
@@ -89,8 +89,8 @@
     <div class="member-row">
         <div class="member-text slide-right">
             <h2>Nadza</h2>
-            <h4 style="color: var(--brand-orange);">DATABASE ENGINEER</h4>
-            <p>Merancang dan mengelola struktur basis data MySQL.</p>
+            <h4 style="color: var(--brand-orange);">BACKEND DEV</h4>
+            <p>Memastikan pertukaran data berjalan aman, cepat, dan terintegrasi lancar dengan tampilan (frontend) yang dilihat oleh pengguna.</p>
         </div>
         <div class="member-img slide-left"><img src="assets/img/member2.png" alt="Member 2"></div>
     </div>
@@ -99,7 +99,7 @@
         <div class="member-text slide-left">
             <h2>Rafli</h2>
             <h4 style="color: var(--brand-orange);">FRONTEND DEV</h4>
-            <p>Mengembangkan antarmuka pengguna yang responsif.</p>
+            <p>Mengembangkan interface pengguna yang responsif.</p>
         </div>
         <div class="member-img slide-right"><img src="assets/img/member3.png" alt="Member 3"></div>
     </div>
