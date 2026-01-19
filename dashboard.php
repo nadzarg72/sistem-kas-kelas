@@ -4,7 +4,7 @@ include 'config/koneksi.php';
 
 if(!isset($_SESSION['login'])){ header("Location: login.php"); exit; }
 
-// --- Logic Data ---
+// --- LOGIC QUERY DATA ---
 
 // 1. Hitung Total Pemasukan
 $q_masuk = mysqli_query($conn, "SELECT SUM(nominal) as total FROM transaksi WHERE jenis='Masuk'");
@@ -14,12 +14,18 @@ $masuk = mysqli_fetch_assoc($q_masuk)['total'];
 $q_keluar = mysqli_query($conn, "SELECT SUM(nominal) as total FROM transaksi WHERE jenis='Keluar'");
 $keluar = mysqli_fetch_assoc($q_keluar)['total'];
 
-// 3. Hitung Saldo Akhir
+// 3. Hitung Saldo
 $saldo = $masuk - $keluar;
+
+// 4. Hitung Pemasukan BULAN INI
+$bulan_ini = date('m');
+$tahun_ini = date('Y');
+$q_bulan = mysqli_query($conn, "SELECT SUM(nominal) as total FROM transaksi WHERE jenis='Masuk' AND MONTH(tanggal) = '$bulan_ini' AND YEAR(tanggal) = '$tahun_ini'");
+$masuk_bulan_ini = mysqli_fetch_assoc($q_bulan)['total'];
 ?>
 
-<div class="container" style="padding-top: 120px;">
-    
+
+<div class="container">
     <div class="animate-entry delay-1" style="display:flex; justify-content:space-between; align-items:center; margin-bottom:30px;">
         <div>
             <h2 style="font-size:1.8rem; margin-bottom: 5px;">Dashboard</h2>
@@ -40,21 +46,19 @@ $saldo = $masuk - $keluar;
                 Rp <span class="counter-anim" data-target="<?= $masuk; ?>">0</span>
             </h2>
         </div>
-
         <div class="dash-card" style="border-left:4px solid var(--danger-color);">
             <h3 style="color:var(--text-muted); font-size:0.9rem;">Pengeluaran Total</h3>
             <h2 style="font-size:1.5rem;">
                 Rp <span class="counter-anim" data-target="<?= $keluar; ?>">0</span>
             </h2>
         </div>
-
         <div class="dash-card" style="border-left:4px solid var(--brand-orange);">
-            <h3 style="color:var(--text-muted); font-size:0.9rem;">Saldo Akhir</h3>
+            <h3 style="color:var(--text-muted); font-size:0.9rem;">Pemasukan Bulan Ini</h3>
             <h2 style="font-size:1.5rem;">
-                Rp <span class="counter-anim" data-target="<?= $saldo; ?>">0</span>
+                Rp <span class="counter-anim" data-target="<?= $masuk_bulan_ini ?: 0; ?>">0</span>
             </h2>
             <span style="font-size:0.75rem; color:var(--text-muted); margin-top:5px;">
-                <i class="fas fa-wallet"></i> Total Kas Saat Ini
+                <i class="fas fa-calendar-alt"></i> Periode <?= date('F Y'); ?>
             </span>
         </div>
     </div>
@@ -148,7 +152,7 @@ $saldo = $masuk - $keluar;
 </div>
 
 <script>
-    // Config Chart JS
+    // --- 1. ANIMASI CHART JS (Growing Bar 0 -> Data) ---
     const ctx = document.getElementById('myChart');
     const styles = getComputedStyle(document.body);
     
@@ -170,7 +174,9 @@ $saldo = $masuk - $keluar;
                     borderColor: [accentColor, dangerColor],
                     borderWidth: 0,
                     borderRadius: 8,
-                    barThickness: 45,
+                    barThickness: 50,
+                    
+                    // Style Hover
                     hoverBackgroundColor: [accentColor, dangerColor],
                     hoverBorderWidth: 4,
                     hoverBorderColor: cardColor,
@@ -180,14 +186,17 @@ $saldo = $masuk - $keluar;
             options: {
                 responsive: true,
                 maintainAspectRatio: false,
-                indexAxis: 'y',
+                indexAxis: 'y', // Bar Horizontal
+                
+                // --- BAGIAN INI YANG BIKIN ANIMASI TUMBUH ---
                 animation: {
-                    duration: 2000,
-                    easing: 'easeOutQuart',
-                    delay: (context) => {
-                        return context.dataIndex * 400; 
+                    x: { // Fokus ke sumbu X (karena indexAxis: y)
+                        duration: 2500,  // Durasi lama (2.5 detik) biar kelihatan jalannya
+                        from: 0,         // Paksa mulai dari 0
+                        easing: 'easeOutQuart' // Gerakannya mulus
                     }
                 },
+                
                 plugins: {
                     legend: { display: false },
                     tooltip: {
@@ -207,6 +216,7 @@ $saldo = $masuk - $keluar;
                 },
                 scales: {
                     x: {
+                        beginAtZero: true, // Pastikan grafik start dari 0
                         grid: { display: false, drawBorder: false },
                         ticks: { 
                             color: textColor,
@@ -227,13 +237,13 @@ $saldo = $masuk - $keluar;
         });
     }
 
-    // Animasi Angka (Counter)
+    // --- 2. SCRIPT ANIMASI ANGKA (COUNTER UP) ---
     const counters = document.querySelectorAll('.counter-anim');
     
     counters.forEach(counter => {
         const target = +counter.getAttribute('data-target');
         const duration = 2000; 
-        const frameDuration = 1000 / 60;
+        const frameDuration = 1000 / 60; 
         const totalFrames = Math.round(duration / frameDuration);
         
         let frame = 0;
