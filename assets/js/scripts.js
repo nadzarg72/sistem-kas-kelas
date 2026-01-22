@@ -1,8 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
     
-    // ===========================================
     // 1. DARK MODE TOGGLE LOGIC
-    // ===========================================
     const toggleBtn = document.getElementById('theme-toggle');
     const body = document.body;
     
@@ -18,9 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // ===========================================
     // 2. NAVBAR SCROLL EFFECT
-    // ===========================================
     const navbar = document.querySelector('.navbar');
     
     // Cek apakah kita ada di halaman dashboard (cek elemen khusus dashboard)
@@ -42,9 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // ===========================================
     // 3. ANIMATION OBSERVER (FADE IN ON SCROLL)
-    // ===========================================
     const observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
             if (entry.isIntersecting) {
