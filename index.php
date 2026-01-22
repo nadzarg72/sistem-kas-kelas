@@ -106,7 +106,7 @@
 
     <div class="member-row">
         <div class="member-text slide-right">
-            <h2>Teya</h2>
+            <h2>Mufti Anggraeni</h2>
             <h4 style="color: var(--brand-orange);">QUALITY CONTROL</h4>
             <p>Melakukan pengujian sistem untuk memastikan fungsionalitas.</p>
         </div>
